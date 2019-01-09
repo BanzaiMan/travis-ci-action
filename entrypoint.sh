@@ -9,7 +9,7 @@ if [ -n ${TRAVIS_TOKEN} ]; then
     -H "Travis-API-Version: 3" \
     -H "Authorization: token ${TRAVIS_TOKEN}" \
     -d "{\"request\": {}}" \
-    https://api.travis-ci.org/BanzaiMan%2Ftravis_production_test/requests
+    https://api.travis-ci.org/repo/BanzaiMan%2Ftravis_production_test/requests
 else
   echo "Please set \$TRAVIS_TOKEN"
 fi
