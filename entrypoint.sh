@@ -9,6 +9,7 @@ set -e
 OWNER=${SLUG%%/*}
 REPO=${SLUG##*/}
 SITE=${SITE:-com}
+PAYLOAD=''
 
 if [ x${SITE} != "xorg" -a x${SITE} != "xcom" ]; then
   echo "Invalid \$SITE value: $SITE; use 'org' or 'com'"
@@ -21,7 +22,7 @@ if [ -n ${TRAVIS_TOKEN} ]; then
     -H "Accept: application/json" \
     -H "Travis-API-Version: 3" \
     -H "Authorization: token ${TRAVIS_TOKEN}" \
-    -d "{\"request\": {}}" \
+    -d "{\"request\": {${PAYLOAD}}}" \
     https://api.travis-ci.${SITE}/repo/${OWNER}%2F${REPO}/requests
 else
   echo "Please set \$TRAVIS_TOKEN"
